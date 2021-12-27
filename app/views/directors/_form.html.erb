@@ -1,0 +1,28 @@
+
+<div class="d-flex justify-content-center">
+<%= form_with model: @director do |form| %>
+  <div class = "form-group">
+    <%= form.text_field :f_name, class:"form-control", placeholder:"First Name" %><br>
+  </div>
+
+  <div class = "form-group">
+    
+    <%= form.text_field :l_name, class:"form-control", placeholder:"Last Name"%><br>
+  </div>
+
+  <div class = "form-group">
+
+    <label>Select Movie:</label>
+
+    <%= form.collection_select :movie_id, Movie.order(:name), :id, :name %>
+  </div>
+
+  <br>
+  </br>
+
+  <div>
+    <%= form.submit class:"btn btn-secondary btn-lg"%>
+    <%= link_to "Back", movies_path, class:"btn btn-dark btn-lg" %>
+  </div>
+</div>
+<% end %>

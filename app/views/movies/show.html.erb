@@ -1,0 +1,68 @@
+<br/>
+<br/>
+<br/>
+<div class="container">
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-6">
+<div class="card" style="width: 40rem;">
+
+<h1 class="text-center"><%= @movie.name %></h1>
+
+<div class="card-body text-center">
+<p><b>RELEASED DATE: </b><%= @movie.release_date %></p>
+<p><b>BUDGET: </b><%= @movie.budget %></p>
+
+<strong>DIRECTORS:</strong>
+<%= render @movie.directors %>
+<%if current_user && current_user.admin?%>
+<%= link_to "Add Directors", new_director_path, class:"btn btn-secondary btn-lg" %>
+<% end %>
+<br>
+<br>
+
+<b>ACTORS:</b>
+<%= render @movie.actors_movies %>
+<%if current_user && current_user.admin?%>
+<%= link_to "Add Actors", new_actor_path, class:"btn btn-secondary btn-lg" %>
+<% end %>
+</br>
+</br>
+
+<div class="image">
+  <img src="<%= @movie.attachment %>" class = "img-thumbnail" alt="images" width="200" height="100"/>
+</div>
+<br>
+<ul>
+<%if current_user && current_user.admin?%>
+  <%= link_to 'Edit', edit_movie_path(@movie), data:{remote: true},class:"btn btn-secondary btn-lg"%>
+  <%= link_to "Delete", movie_path(@movie),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class:"btn btn-danger btn-lg"%>
+<% end %>
+  <%= link_to "Back", movies_path, class:"btn btn-dark btn-lg" %>
+
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<br/>
+<div class="container">
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-6">
+<% if user_signed_in? %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+<% end %>
+
+<h2>Comments</h2>
+<%= render @movie.comments %>
+
+</div>
+</div>
+</div>

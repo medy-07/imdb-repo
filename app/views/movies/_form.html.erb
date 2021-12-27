@@ -1,0 +1,56 @@
+<br>
+<div class="d-flex justify-content-center">
+<%= form_with model:movie do |form| %>
+  <div class = "form-group">
+    <%= form.text_field :name, class:"form-control", placeholder:"Movie Title" %><br>
+    <% movie.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class = "form-group">
+    
+    <%= form.text_field :release_date, class:"form-control", placeholder:"Release_date: yyyy-mm-dd",
+    type: "date"%><br>
+    <% movie.errors.full_messages_for(:release_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class = "form-group">
+
+    <%= form.text_field :budget, class:"form-control", placeholder:"Budget(in Cr)"%><br>
+    <% movie.errors.full_messages_for(:budget).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class = "form-group">
+
+    <label>Select Actor :</label>
+
+    <%= form.collection_select :actor_id, Actor.order(:f_name), :id, :f_name %>
+  </div>
+
+  <br>
+  
+  <div class = "form-group">
+
+    <label>Select Director :</label>
+
+    <%= form.collection_select :director_id, Director.order(:f_name), :id, :f_name %>
+  </div>
+  <br>
+  <div>
+    
+    <%= form.label :"upload movie Poster:" %>
+    <%= form.file_field :attachment,accept: 'image/png, image/gif, image/jpeg' %>  
+    
+  </div>
+  <br>
+  <div>
+    <%= form.submit class:"btn btn-secondary btn-lg"%>
+    <%= link_to "Back", movies_path, class:"btn btn-dark btn-lg" %>
+  </div>
+</div>
+<% end %>

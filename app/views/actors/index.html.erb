@@ -1,0 +1,22 @@
+<br>
+<br/>
+<br/>
+<ul class="list-group">
+<h1 class="text-center">Actors</h1>
+
+<ul class="text-center">
+  <% @actors.each do |actor| %>
+    <li class="list-group-item">
+      <%= link_to actor.f_name,actor %>
+      <%= link_to actor.l_name,actor %>
+    </li>
+  <% end %>
+</ul>
+</ul>
+
+<style>
+  a{
+    text-decoration: none !important;
+    color:  black;
+  }
+</style>

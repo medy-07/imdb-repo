@@ -1,0 +1,17 @@
+<br>
+<br/>
+<br/>
+<div class="text-center">
+<h2>
+    <%= @director.f_name %>
+    <%= @director.l_name %>
+</h2>
+<strong>MOVIES LIST:</strong>
+<%= render @director.movies %>
+<br>
+<%if current_user && current_user.admin?%>
+<%= link_to "Delete", director_path(@director),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class:"btn btn-danger btn-lg"%>
+<% end %>
+<%= link_to "Back", directors_path, class:"btn btn-dark btn-lg" %>

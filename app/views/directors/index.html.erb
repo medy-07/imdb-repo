@@ -1,0 +1,22 @@
+<br>
+<br/>
+<br/>
+<ul class="list-group">
+<h1 class="text-center">Directors</h1>
+
+<ul class="text-center">
+  <% @directors.each do |director| %>
+    <li class="list-group-item">
+      <%= link_to director.f_name,director %>
+      <%= link_to director.l_name,director %>
+    </li>
+  <% end %>
+</ul>
+</ul>
+
+<style>
+  a{
+    text-decoration: none !important;
+    color:  black;
+  }
+</style>
