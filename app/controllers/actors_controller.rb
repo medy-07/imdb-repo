@@ -1,15 +1,12 @@
 class ActorsController < ApplicationController
 
   def create
-    # binding.pry
     @movie = Movie.find(params[:actor][:movie_id])
-    # binding.pry
     @actor = @movie.actors.create(actor_params)
     redirect_to movie_path(@movie)
   end
 
   def new
-    # binding.pry
     # @movie = Movie.find(params[:format])
     @actor = Actor.new
   end
