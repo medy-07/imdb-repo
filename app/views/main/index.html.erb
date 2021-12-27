@@ -1,6 +1,7 @@
 <br>
 <br/>
 <br/>
+
 <%if current_user && current_user.admin?%>
   <%= link_to "Add New Movie", new_movie_path, class:"btn btn-success btn-lg"%>
 <% end %>
@@ -12,6 +13,7 @@
     <div class="card h-100">
       <img src="<%= movie.attachment %>" class = "img-thumbnail" alt="images">
       <div class="card-body">
+        <%= movie.name %>
         <h5 class="card-title"><%= link_to "Show Movie Details",movie %></h5>
         <p class="card-text"></p>
       </div>
@@ -25,3 +27,4 @@
     text-decoration: none !important;
     color:  green;
   }
+</style>
